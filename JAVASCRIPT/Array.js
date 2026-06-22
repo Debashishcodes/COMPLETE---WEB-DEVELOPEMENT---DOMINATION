@@ -12,4 +12,4 @@
 //  slice - 
 //  reverse - reverse the entire array 
 //  sort - sort the array in either ascending order or descending order
-//  # map , flter ,recuce, find ,some ,every 
+//  # map , flter ,recuce, find ,some ,every  
