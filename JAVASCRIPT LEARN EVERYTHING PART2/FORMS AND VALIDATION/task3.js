@@ -1,33 +1,54 @@
 const loginForm = document.getElementById("loginForm");
-const email = document.getElementById("email");
+const emailInput = document.getElementById("email");
 const emailError = document.getElementById("emailError");
-const password = document.getElementById("password");
+const passwordInput = document.getElementById("password");
 const passwordError = document.getElementById("passwordError");
 
 function validateEmail(){
-
+    const emailValue = emailInput.value.trim();
+    if(emailValue === ""){
+        emailError.innerText = "email is required";
+        return false;
+    }
+    else{
+        emailError.innerText = "";
+        return true;
+    }
 }
 
 function validatePassword(){
-
+    const passwordValue = passwordInput.value.trim();
+    if(passwordValue === ""){
+        passwordError.innerText = "Password can not be empty"; 
+        return false;
+    }
+    if(passwordValue.length < 8){
+        passwordError.innerText = "Password must contain at least 8 characters."     ;
+        return false;
+    }
+    else{
+        passwordError.innerText = "";
+        return true;
+    }
 }
-email.addEventListener("blur",()=>{
-    
+
+emailInput.addEventListener("blur",()=>{
+    validateEmail();
 });
-emailError.addEventListener("input",()=>{
-
+emailInput.addEventListener("input",()=>{
+    validateEmail();
 });
 
-password.addEventListener("blur",()=>{
-
+passwordInput.addEventListener("blur",()=>{
+    validatePassword();
 });
-password.addEventListener("input",()=>{
-
+passwordInput.addEventListener("input",()=>{
+    validatePassword();
 });
 
 loginForm.addEventListener("submit",(e)=>{
     e.preventDefault();
-    if(validateEmail()){
+    if(validateEmail() && validatePassword()){
         console.log("Login Success");
     }
     
